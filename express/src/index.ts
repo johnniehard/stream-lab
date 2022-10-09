@@ -13,22 +13,23 @@ app.get("/", (req, res) => {
 
 const io = new socketio.Server(server, { cors: { origin: "*" } });
 
-const confettiSchema = z.object({
+const schema = z.object({
   x: z.number(),
   y: z.number(),
+  component: z.string(),
 });
 
-function onConfetti(msg: any) {
-  const coords = confettiSchema.parse(msg);
+function onMessage(msg: any) {
+  const message = schema.parse(msg);
 
-  console.log("Sending confetti", coords);
-  io.emit("confetti", coords);
+  console.log("Sending message", message);
+  io.emit("message", message);
 }
 
 io.on("connection", (socket) => {
   console.log("a user connected");
 
-  socket.on("confetti", onConfetti);
+  socket.on("message", onMessage);
 });
 
 const port = process.env.PORT || 3000;

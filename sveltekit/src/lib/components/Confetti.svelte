@@ -2,9 +2,6 @@
 	import { confetti } from '@neoconfetti/svelte';
 	import { tick } from 'svelte';
 
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
 
 	let isVisible = false;
 
@@ -19,17 +16,8 @@
 		isVisible = true;
 	}
 
-	async function handleClick(e: MouseEvent) {
-		x = e.clientX;
-		y = e.clientY;
-
-		dispatch('click', {x, y})
-	}
-
 	$: showConfetti(x, y)
 </script>
-
-<div class="clicktarget" on:click={handleClick} />
 
 {#if isVisible}
 	<div>
@@ -45,14 +33,5 @@
 <style>
 	:global(body) {
 		overflow: hidden;
-	}
-
-	.clicktarget {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		z-index: -1;
 	}
 </style>
