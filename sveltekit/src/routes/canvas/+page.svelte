@@ -4,9 +4,11 @@
 	import io from 'socket.io-client'
 	
 	import Confetti from "$lib/components/Confetti.svelte";
+	import Allan from '$lib/components/Allan.svelte';
 
     const components: {[id: string]: any} = {
-        'confetti': Confetti
+        'confetti': Confetti,
+        'allan': Allan
     }
 
     let messages: {
