@@ -41,7 +41,7 @@
 
     let tools = [
         {id: 'confetti', label: 'confetti'},
-        {id: 'allan', label: 'allan'}
+        {id: 'allan', label: 'allan e.'}
     ]
 </script>
 
