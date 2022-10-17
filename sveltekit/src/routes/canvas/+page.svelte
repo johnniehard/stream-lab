@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { PUBLIC_API_WS_URL } from '$env/static/public';
     import {page} from '$app/stores'
     
 	import io from 'socket.io-client'
@@ -19,7 +20,9 @@
 
     ]
 
-    const socket = io('ws://localhost:3000');
+    console.log({PUBLIC_API_WS_URL})
+
+    const socket = io(PUBLIC_API_WS_URL);
 
 	socket.on('message', function(msg: any) {
         messages = [...messages.slice(0, 20), msg]
