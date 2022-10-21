@@ -45,7 +45,7 @@
     ]
 </script>
 
-<div class="fixed inset-0 bg-blue-500">
+<div class="fixed inset-0 bg-transparent">
 
     {#each messages as message}
         {@const component = components[message.component]}
